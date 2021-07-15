@@ -4,9 +4,10 @@ import com.alibaba.chaosblade.exec.common.aop.Enhancer;
 import com.alibaba.chaosblade.exec.common.aop.Plugin;
 import com.alibaba.chaosblade.exec.common.aop.PointCut;
 import com.alibaba.chaosblade.exec.common.model.ModelSpec;
+import com.alibaba.chaosblade.exec.common.plugin.MethodEnhancer;
 
 /**
- * @description: TODO
+ * @description: LickeyPlugin
  * @author: lvqi
  */
 public class LickeyPlugin implements Plugin {
@@ -27,6 +28,6 @@ public class LickeyPlugin implements Plugin {
 
     @Override
     public Enhancer getEnhancer() {
-        return null;
+        return new MethodEnhancer();
     }
 }
