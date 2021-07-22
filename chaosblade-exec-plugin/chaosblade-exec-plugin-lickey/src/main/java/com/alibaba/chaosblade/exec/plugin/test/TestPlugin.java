@@ -1,19 +1,18 @@
-package com.alibaba.chaosblade.exec.plugin.lickey;
+package com.alibaba.chaosblade.exec.plugin.test;
 
 import com.alibaba.chaosblade.exec.common.aop.Enhancer;
 import com.alibaba.chaosblade.exec.common.aop.Plugin;
 import com.alibaba.chaosblade.exec.common.aop.PointCut;
 import com.alibaba.chaosblade.exec.common.model.ModelSpec;
-import com.alibaba.chaosblade.exec.common.plugin.MethodEnhancer;
 
 /**
  * @description: LickeyPlugin
  * @author: lvqi
  */
-public class LickeyPlugin implements Plugin {
+public class TestPlugin implements Plugin {
     @Override
     public String getName() {
-        return "lickey plugin";
+        return "lickey1111";
     }
 
     @Override
@@ -28,6 +27,6 @@ public class LickeyPlugin implements Plugin {
 
     @Override
     public Enhancer getEnhancer() {
-        return new MethodEnhancer();
+        return new LickeyEnhancer();
     }
 }

@@ -14,18 +14,13 @@
  * limitations under the License.
  */
 
-package com.alibaba.chaosblade.exec.plugin.lickey;
+package com.alibaba.chaosblade.exec.plugin.test;
 
 import com.alibaba.chaosblade.exec.common.aop.PredicateResult;
-import com.alibaba.chaosblade.exec.common.constant.CategoryConstants;
 import com.alibaba.chaosblade.exec.common.model.FlagSpec;
 import com.alibaba.chaosblade.exec.common.model.action.ActionModel;
 import com.alibaba.chaosblade.exec.common.model.action.BaseActionSpec;
-import com.alibaba.chaosblade.exec.common.model.action.delay.DefaultDelayExecutor;
-import com.alibaba.chaosblade.exec.common.model.action.delay.TimeFlagSpec;
-import com.alibaba.chaosblade.exec.common.model.action.delay.TimeOffsetFlagSpec;
 import com.alibaba.chaosblade.exec.common.util.StringUtil;
-import com.alibaba.chaosblade.exec.common.util.StringUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,6 +29,7 @@ import java.util.List;
  * @author Changjun Xiao
  */
 public class TestActionSpec extends BaseActionSpec {
+
 
 
     public TestActionSpec() {
@@ -47,7 +43,7 @@ public class TestActionSpec extends BaseActionSpec {
 
     @Override
     public String[] getAliases() {
-        return new String[0];
+        return new String[] {"test"};
     }
 
     @Override
@@ -57,9 +53,6 @@ public class TestActionSpec extends BaseActionSpec {
 
     @Override
     public String getLongDesc() {
-        if (StringUtils.isNotBlank(super.getLongDesc())) {
-            return super.getLongDesc();
-        }
         return "return test...";
     }
 
@@ -70,8 +63,14 @@ public class TestActionSpec extends BaseActionSpec {
 
     @Override
     public PredicateResult predicate(ActionModel actionModel) {
-
         return PredicateResult.success();
+    }
+
+    @Override
+    public String getExample() {
+        return "# Do return 'test' experiment \n" +
+                "blade create lickey test --class com.hellobike.openapi.admin.web.controller.TestController" +
+                " --method t\n";
     }
 
     @Override

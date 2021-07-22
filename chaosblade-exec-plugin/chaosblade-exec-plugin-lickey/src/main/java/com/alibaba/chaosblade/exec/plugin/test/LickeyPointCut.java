@@ -1,10 +1,11 @@
-package com.alibaba.chaosblade.exec.plugin.lickey;
+package com.alibaba.chaosblade.exec.plugin.test;
 
 import com.alibaba.chaosblade.exec.common.aop.PointCut;
 import com.alibaba.chaosblade.exec.common.aop.matcher.clazz.ClassMatcher;
 import com.alibaba.chaosblade.exec.common.aop.matcher.clazz.NameClassMatcher;
 import com.alibaba.chaosblade.exec.common.aop.matcher.method.MethodMatcher;
 import com.alibaba.chaosblade.exec.common.aop.matcher.method.NameMethodMatcher;
+import com.alibaba.chaosblade.exec.common.aop.matcher.method.OrMethodMatcher;
 
 
 /**
@@ -14,13 +15,16 @@ public class LickeyPointCut implements PointCut {
 
     @Override
     public ClassMatcher getClassMatcher() {
-        NameClassMatcher nameClassMatcher = new NameClassMatcher("com.hellobike.openapi.admin.application.service.openapi");
+        NameClassMatcher nameClassMatcher = new NameClassMatcher("com.hellobike.openapi.admin.web.controller.TestController");
         return nameClassMatcher;
     }
 
     @Override
     public MethodMatcher getMethodMatcher() {
-        NameMethodMatcher nameMethodMatcher = new NameMethodMatcher("fetchApiDetail");
-        return nameMethodMatcher;
+        OrMethodMatcher orMethodMatcher = new OrMethodMatcher();
+        orMethodMatcher.or(new NameMethodMatcher("t"))
+                .or(new NameMethodMatcher("matchSign"));
+
+        return  orMethodMatcher;
     }
 }
